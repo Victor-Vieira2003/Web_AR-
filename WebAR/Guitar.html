@@ -21,17 +21,18 @@
             width: 400px;
             height: 600px;
             margin: 0 auto;
+            background-color: white;
         }
     </style>
 </head>
-<body>
+<body style="background-color: antiquewhite;">
     <model-viewer id="effectsViewer" src="assets/guitarra/instrument_guitar_ultra_low_poly.glb" camera-controls auto-rotate ar ios-src="assets/guitarra/Instrument_Guitar_Ultra_Low_Poly.usdz">
         <effect-composer render-mode="quality">
-            <outline-effect color="red" strength="5" blend-mode="skip"></outline-effect>
+            <outline-effect color="#000000" strength="10" blend-mode="skip"></outline-effect>
             <bloom-effect blend-mode="skip"></bloom-effect>
         </effect-composer>
         <div class="controls">
-            <label for="outline">Outline Effect</label>
+            <label for="outline">borda</label>
             <input type="checkbox" id="outline">
 
             <label for="bloom">Bloom</label>
