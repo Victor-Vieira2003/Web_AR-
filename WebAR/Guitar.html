@@ -23,10 +23,44 @@
             margin: 0 auto;
             background-color: white;
         }
+
+        /*Etiqueta*/
+        .hotspot{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
+    box-sizing: border-box;
+    pointer-events: none;
+    }
+
+    .hotspot[slot="hotspot-hand"]{
+        --min-hotspot-opacity: 0;
+        background-color: red;
+    }
+
+    .hotspot[slot="hotspot-foot"]:not([data-visible]) {
+        background-color: transparent;
+        border: 3px solid blue;
+    }
+
+    .annotation{
+        background-color: #888888;
+        position: absolute;
+        transform: translate(10px, 10px);
+        border-radius: 10px;
+        padding: 10px;
+    }
+    /* This keeps child nodes hidden while the element loads */
+    :not(:defined) > * {
+        display: none;
+    }
     </style>
 </head>
 <body style="background-color: antiquewhite;">
-    <model-viewer id="effectsViewer" src="assets/guitarra/instrument_guitar_ultra_low_poly.glb" camera-controls auto-rotate ar ios-src="assets/guitarra/Instrument_Guitar_Ultra_Low_Poly.usdz">
+    <model-viewer id="effectsViewer hotspot-demo" src="assets/guitarra/instrument_guitar_ultra_low_poly.glb" camera-controls auto-rotate ar ios-src="assets/guitarra/Instrument_Guitar_Ultra_Low_Poly.usdz">
         <effect-composer render-mode="quality">
             <outline-effect color="#000000" strength="10" blend-mode="skip"></outline-effect>
             <bloom-effect blend-mode="skip"></bloom-effect>
@@ -38,6 +72,7 @@
             <label for="bloom">Bloom</label>
             <input type="checkbox" id="bloom">
         </div>
+        <div class="annotation" ar>This annotation is fixed in screen-space</div>
     </model-viewer>
     <script type="module">
         const effectsViewer = document.querySelector("model-viewer#effectsViewer");
@@ -85,5 +120,6 @@
           inputs[i].addEventListener('change', (e) => effects[i].blendMode = e.target.checked ? 'default' : 'skip');
         }
       </script>-->
+      
 </body>
 </html>
